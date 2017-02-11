@@ -53,3 +53,9 @@ Configuring libncurses.
 Configuring htop.
 / # 
 ```
+
+Links
+=====
+
+* https://hub.docker.com/r/zoobab/lede-17.01.0-rc2-r3131-42f3c1f-x86-64/
+* https://downloads.lede-project.org/releases/17.01.0-rc2/targets/x86/64/
