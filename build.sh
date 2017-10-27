@@ -1,11 +1,7 @@
 #!/bin/bash
 set -x
-
-DISTRO="lede"
-ARCH="x86-64"
-VERSION="17.01.4"
-REPO="$DISTRO-$VERSION-$ARCH"
-HUBUSER="zoobab"
+set -u
+source config.txt
 
 docker import https://downloads.lede-project.org/releases/$VERSION/targets/x86/64/$REPO-generic-rootfs.tar.gz $DISTRO:$VERSION
 CTID=$(docker run -d -it $DISTRO:$VERSION sh)
