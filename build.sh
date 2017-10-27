@@ -1,15 +1,16 @@
 #!/bin/bash
-set -e
 set -x
 
-REPO="lede-17.01.0-rc2-r3131-42f3c1f-x86-64"
-TAG="latest"
+DISTRO="lede"
+ARCH="x86-64"
+VERSION="17.01.4"
+REPO="$DISTRO-$VERSION-$ARCH"
 HUBUSER="zoobab"
 
-docker import https://downloads.lede-project.org/releases/17.01.0-rc2/targets/x86/64/$REPO-generic-rootfs.tar.gz $REPO:$TAG
-CTID=$(docker run -d -it $REPO:$TAG sh)
+docker import https://downloads.lede-project.org/releases/$VERSION/targets/x86/64/$REPO-generic-rootfs.tar.gz $DISTRO:$VERSION
+CTID=$(docker run -d -it $DISTRO:$VERSION sh)
 docker exec $CTID mkdir -pv /var/run
 docker exec $CTID mkdir -pv /var/lock
 docker exec $CTID opkg update
-docker commit $CTID $HUBUSER/$REPO:$TAG
-docker push $HUBUSER/$REPO:$TAG
+docker commit $CTID $HUBUSER/$DISTRO:$VERSION
+docker push $HUBUSER/$DISTRO:$VERSION
